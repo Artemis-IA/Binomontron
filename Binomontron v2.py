@@ -15,12 +15,9 @@ def connect_to_database():
 def get_apprenants():
     bdd = connect_to_database()
     cursor = bdd.cursor()
-
     query = "SELECT nom, prenom FROM Apprenants;"
     cursor.execute(query)
-
     apprenants = cursor.fetchall()
-
     cursor.close()
     bdd.close()
 
@@ -32,19 +29,17 @@ def mix_apprenants(apprenants):
 
 # Forme les binômes ou groupes en fonction de la taille souhaitée
 def make_teams(apprenants, group_size):
-    teams = []
+    teams = [] # déclare une liste vide qui servira à accueillir la liste des groupes
     nbr_apprenants = len(apprenants)
-
     for i in range(0, nbr_apprenants, group_size):
-        team = apprenants[i:i+group_size]
-        teams.append(team)
-
+        team = apprenants[i:i+group_size] # affectee les élèves de la liste des apprenants parcourue de i à i+taille_souhaitée dans une équipe
+        teams.append(team) #ajoute les groupe dans une liste des groupes
     if nbr_apprenants % group_size == 1:
         last_member = teams[-1].pop()  # Retire le dernier apprenant du dernier groupe
         random_group = random.choice(teams[:-1])  # Choix aléatoire d'un groupe existant (hors dernier groupe sinon la groupe est vide)
         random_group.append(last_member)  # Ajoute le dernier apprenant au groupe sélectionné aléatoirement
 
-    return teams
+    return teams 
 
 # Afficher les équipes formées
 def display_teams(teams):
