@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : ven. 12 mai 2023 à 12:06
+-- Généré le : mer. 17 mai 2023 à 08:57
 -- Version du serveur : 8.0.33
 -- Version de PHP : 8.1.18
 
@@ -41,7 +41,6 @@ CREATE TABLE `Apprenants` (
 INSERT INTO `Apprenants` (`id_apprenant`, `nom`, `prenom`, `mail`) VALUES
 (1, 'Frédéric', 'BOIREAU', 'frederic.boireau@isen-ouest.yncrea.fr'),
 (2, 'Alexandre', 'CARAES', 'alexandre.caraes@isen-ouest.yncrea.fr'),
-(3, 'Guillaume', 'CARDON', 'guillaume.cardon@isen-ouest.yncrea.fr'),
 (4, 'Morgan', 'COULM', 'morgan.coulm@isen-ouest.yncrea.fr'),
 (5, 'Andy', 'DUBIGNY', 'andy.dubigny@isen-ouest.yncrea.fr'),
 (6, 'Youenn', 'FEULVARC’H', 'youenn.feulvarc-h@isen-ouest.yncrea.fr'),
@@ -133,7 +132,7 @@ ALTER TABLE `Projet`
 -- AUTO_INCREMENT pour la table `Apprenants`
 --
 ALTER TABLE `Apprenants`
-  MODIFY `id_apprenant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_apprenant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `Groupes`
@@ -158,12 +157,6 @@ ALTER TABLE `App_Groupe`
   ADD CONSTRAINT `App_Groupe_ibfk_1` FOREIGN KEY (`id_apprenant`) REFERENCES `Apprenants` (`id_apprenant`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `App_Groupe_ibfk_2` FOREIGN KEY (`id_groupe`) REFERENCES `Groupes` (`id_groupe`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `App_Groupe_ibfk_3` FOREIGN KEY (`id_projet`) REFERENCES `Projet` (`id_projet`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Contraintes pour la table `Projet`
---
-ALTER TABLE `Projet`
-  ADD CONSTRAINT `Projet_ibfk_1` FOREIGN KEY (`id_groupe`) REFERENCES `Groupes` (`id_groupe`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
